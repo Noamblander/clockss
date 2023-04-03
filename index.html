@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countdown Timer</title>
+    <style>
+         .next-page-link {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          color: rgb(0, 0, 0);
+          background-color: rgb(255, 255, 255);
+          padding: 10px 20px;
+          text-decoration: none;
+        }
+      body {
+        background-color: white;
+        transition: background-color 1s ease-in-out;
+      }
+      
+      #timer {
+        font-size: 4em;
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      #boom {
+        font-size: 8em;
+        text-align: center;
+        margin-top: 50px;
+        color: red;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        z-index: 1;
+      }
+      
+      button {
+        color: brown;
+        font-size: 2em;
+        padding: 10px 20px;
+        margin: 0 auto;
+        display: block;
+        z-index: 2;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="timer">Press Start to begin the countdown</div>
+    <div id="boom">BOOM!!   
+    </div>
+    <hr> <br>
+    <button onclick="startTimer()">Start</button>
+    <a href="clock.html" class="next-page-link">Next Page</a>
+   
+   
+   
+   
+   <script>
+      function countdown() {
+        let timerDisplay = document.getElementById("timer");
+        let boomDisplay = document.getElementById("boom");
+        let count = 30;
+        
+        let timerInterval = setInterval(function() {
+          if (count > 0) {
+            timerDisplay.innerHTML = count;
+            count--;
+          } else {
+            clearInterval(timerInterval);
+            timerDisplay.style.display = "none";
+            boomDisplay.style.display = "block";
+            document.body.style.backgroundColor = "black";
+          }
+        }, 1000);
+      }
+      
+      function startTimer() {
+        countdown();
+        document.querySelector("button").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

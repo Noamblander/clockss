@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>size Changing Clock</title>
+    <style>
+        
+         .next-page-link {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          color: rgb(0, 0, 0);
+          background-color: rgb(255, 255, 255);
+          padding: 10px 20px;
+          text-decoration: none;
+        }
+      body {
+        background-color: #343a40;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      
+      #clock {
+        
+        font-weight: bold;
+        letter-spacing: 0.1em;
+      }
+      
+      .size1 {
+        font-size:7em ;
+      }
+      
+      .size2 {
+        font-size:6em ;
+      }
+      
+      .size3 {
+        font-size:5em ;
+      }
+      
+      
+      .size4 {
+        font-size:4em ;
+      }
+      
+      .size5 {
+        font-size:3em ;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <a href="index.html" class="next-page-link">first Page</a>
+    
+    <script>
+      function updateClock() {
+        let clockDisplay = document.getElementById("clock");
+        let now = new Date();
+        let hours = now.getHours().toString().padStart(2, "0");
+        let minutes = now.getMinutes().toString().padStart(2, "0");
+        let seconds = now.getSeconds().toString().padStart(2, "0");
+        let timeString = `${hours}:${minutes}:${seconds}`;
+        clockDisplay.innerHTML = timeString;
+        setTimeout(updateClock, 1000);
+        
+        let sizes = ["size1", "size2", "size3", "size4", "size5"];
+        let sizeIndex = Math.floor(Math.random() * sizes.length);
+        let sizeClass = sizes[sizeIndex];
+        clockDisplay.className = sizeClass;
+      }
+      
+      updateClock();
+    </script>
+  </body>
+</html>

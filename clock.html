@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>.next-page-link {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        padding: 10px 20px;
+        text-decoration: none;}
+        </style>
+</head>
+<body onload="showTime()" class="background1">
+	<center><div class="container">
+            <div id="clockam"></div>
+            <div id="clockpm"></div>
+        </div> </center>
+        <div class="next-page-link">
+        <a href="index.html"> last Page </a>&nbsp;&nbsp;
+        <a href="clock2.html">Next Page</a>
+        </div>
+    
+	<script>
+        function showTime() {
+            let date = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            let session = "AM";
+            
+            if (h == 0) {
+                h = 12;
+            } 
+    
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            } 
+    
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            let time = h + ":" + m + ":" + s + " " + session;
+            setInterval(showTime, 1000);
+            
+            let scolor = s;
+            if (scolor % 5 ===0)
+            {scolor = "blue"}
+            if (scolor % 4 ===0)
+            {scolor = "red"}
+            if (scolor % 3 ===0)
+            {scolor = "green"}
+            if (scolor % 2 ===0)
+            {scolor = "yellow"}
+            else {scolor = "black"}
+
+            if (session === "AM") {
+                document.getElementById("clockam").innerHTML = time;
+                document.querySelector(".container").style.backgroundColor = "#ffffff"; // Set AM background color
+            } else {
+                document.getElementById("clockpm").innerHTML = time;
+                document.querySelector(".container").style.backgroundColor = "#03095d"; // Set PM background color
+            }
+           
+        }
+    </script>
+</body>
+</html>

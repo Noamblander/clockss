@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>color Changing Clock</title>
+    <style>
+        
+         .next-page-link {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          color: rgb(0, 0, 0);
+          background-color: rgb(255, 255, 255);
+          padding: 10px 20px;
+          text-decoration: none;
+        }
+      body {
+        background-color: #343a40;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      
+      #clock {
+        font-size: 8em;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+      }
+      
+      .red {
+        color: red;
+      }
+      
+      .yellow {
+        color: yellow;
+      }
+      
+      .green {
+        color: green;
+      }
+      
+      .blue {
+        color: blue;
+      }
+      
+      .purple {
+        color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <div>
+    <div class="next-page-link">
+        <a href="clock.html"> last Page </a>&nbsp;&nbsp;
+        <a href="clock3.html">Next Page</a>
+        </div>
+    
+    <script>
+      function updateClock() {
+        let clockDisplay = document.getElementById("clock");
+        let now = new Date();
+        let hours = now.getHours().toString().padStart(2, "0");
+        let minutes = now.getMinutes().toString().padStart(2, "0");
+        let seconds = now.getSeconds().toString().padStart(2, "0");
+        let timeString = `${hours}:${minutes}:${seconds}`;
+        clockDisplay.innerHTML = timeString;
+        setTimeout(updateClock, 1000);
+        
+        let colors = ["red", "yellow", "green", "blue", "purple"];
+        let colorIndex = Math.floor(Math.random() * colors.length);
+        let colorClass = colors[colorIndex];
+        clockDisplay.className = colorClass;
+      }
+      
+      updateClock();
+    </script>
+  </body>
+</html>
